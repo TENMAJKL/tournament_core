@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %} Admin-Users {% endblock title%}
+
+{% block content %}
+<div class="justify-content-center d-flex text-center min-vh-100 align-items-center flex-column">
+	<h1>{{ action }}</h1>
+	<h5><a href="/admin">Back</a></h5>
+	
+    <form method="POST">
+		<div>
+		<label for="">Name</label><input type="text" class="form-control" disabled name="name" value="{{ name }}">
+		</div>
+
+		<div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="visible" {{ check[user["active"]] }}><label for="" class="form-check-label">Active</label></div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="edit" {{ check[user["edit_perm"]] }}><label for="" class="form-check-label">Edit data</label></div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="add" {{ check[user["create_perm"]] }}><label for="" class="form-check-label">Add data</label></div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="manage" {{ check[user["auth_perm"]] }}><label for="" class="form-check-label">Manage Users</label></div>
+		<div>
+		<button class="btn btn-outline-primary text-center">Edit</button>
+		</div>
+		</div>
+    </form>
+</div>
+
+{% endblock %}

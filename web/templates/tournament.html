@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %} Tournament Edit{% endblock title%}
+
+{% block content %}
+
+<div class="col-4 d-block mx-auto flex-column text-center m-3">
+	<h1 >Tournament settings</h1>
+	<h5><a href="/data">Back</a></h5>
+	<form method="POST"><label for="">Rounds</label><input type="number" class="form-control m-2" value={{ rounds }} name="rounds"></form>
+	<div class="d-flex justify-content-center">
+	<a href="/data/tournament/download" class="btn btn-outline-primary m-2">Download data</a>
+	<a href="/data/tournament/delete" class="btn btn-outline-primary m-2">Delete all data</a>
+	</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block title %} View Data {% endblock title%}
+
+{% block content %}
+<div class="mx-5">
+	<div class="d-flex justify-content-between align-items-center">
+		<div class="flex-column">
+	<h1>Players</h1>
+	<h5><a href="/">Back</a> | <a href="/data/tournament">Global editation</a></h5>
+	</div>
+	<div class="col-lg-4 d-flex">
+		<a href="add" class="btn btn-outline-primary mx-2">Add</a>
+	
+	<input type="text" id="search" class="form-control" placeholder="Search">
+	
+	</div>
+	</div>
+<div class="table-responsive">
+<table class="table text-light border-secondary">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>ID</th>
+			<th>Kills</th>
+			<th>Deaths</th>
+			<th>Assists</th>
+			<th>K/D</th>
+			<th>KPR</th>
+			<th>DPR</th>
+			<th>SVR</th>
+			<th>SLR</th>
+			<th>Team</th>
+			<th>Device</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+
+	<tbody id="players">
+		{% for user in users %}
+		<tr>
+			<td class="text-nowrap">{{ user }}</td>
+			<td class="text-nowrap">{{ getUser(user)["id"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["Kills"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["Deaths"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["Assists"] }}</td>
+			<td class="text-nowrap"> {{ getUser(user)["KD"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["KPR"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["DPR"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["SVR"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["SLR"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["Team"] }}</td>
+			<td class="text-nowrap">{{ getUser(user)["device"] }}</td>
+			<td><a href="/data/edit/{{ user }}"><i class="bi bi-pencil mx-1"></i></a><a href="/data/delete/{{ user }}"><i class="bi bi-trash mx-1"></i></a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+</div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$("#search").on("keyup", function(){
+			var value = $(this).val().toLowerCase();
+			$("#players tr").filter(function() {
+      			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    		});
+		});
+	});
+</script>
+
+
+
+{% endblock content %}

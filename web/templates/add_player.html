@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %} Add Player {% endblock title%}
+
+{% block content %}
+<div class="m-3 text-center">
+		<h1>Add Player</h1>
+		<h3>{{ error }}</h3>
+		<h6><a href="/data">Back</a></h6>
+		<form method="POST" class="d-block mx-auto">
+			<div class="col-lg-4 d-block mx-auto"><label for="">Name</label><input type="text" class="form-control" name="name"></div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Id</label><input type="number" class="form-control" name="id" min="10000000" max="999999999"></div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Team</label><input type="text" class="form-control" name="team"></div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Kills</label><input type="number" class="form-control" name="kills"></div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Deaths</label><input type="number" class="form-control" name="deaths"></div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Assists</label><input type="number" class="form-control" name="assists"></div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Device</label><input type="text" class="form-control" name="device"></div>
+		<button class="btn btn-outline-primary col-2 text-center mt-3">Add</button>
+		</form>
+</div>
+
+{% endblock %}

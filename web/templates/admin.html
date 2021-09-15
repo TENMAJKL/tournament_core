@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %} Admin Users {% endblock title%}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100 flex-column">
+	<h1>Manage users</h1>
+	<h5><a href="/">Back</a></h5>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        {% for user in users %}
+            <div class="card col-lg-3 border-light col-11 p-2 m-2 bg-dark">
+                <div class="d-flex justify-content-between align-items-center">
+                <h1>{{ user }}</h1><div><a href="/admin/edit/{{ user }}"><i class="bi bi-pencil mx-1"></i></a><a href="/admin/delete/{{ user }}"><i class="bi bi-trash mx-1"></i></a></div></div></div>
+        {% endfor %} 
+
+    </div>
+</div>
+<a href="add" class="btn btn-outline-primary text-center w-10 m-2">Add User</a>
+</div>
+{% endblock content %}

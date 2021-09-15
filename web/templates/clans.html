@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %} View Clans {% endblock title%}
+
+{% block content %}
+<div class="mx-5">
+	<div class="d-flex justify-content-between align-items-center">
+		<div class="flex-column">
+	<h1>Clans</h1>
+	<h5><a href="/">Back</a></h5>
+	</div>
+	<div class="col-lg-4 d-flex">
+		<a href="clans/add" class="btn btn-outline-primary mx-2">Add</a>
+	
+	<input type="text" id="search" class="form-control" placeholder="Search">
+	
+	</div>
+	</div>
+<div class="table-responsive">
+<table class="table text-light border-secondary">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Wins</th>
+			<th>Loses</th>
+			<th>Wins/Loses</th>
+			<th>Actions</th>
+
+		</tr>
+	</thead>
+
+	<tbody id="clans">
+		{% for clan in clans %}
+		<tr>
+			<td class="text-nowrap">{{ clan }}</td>
+			<td class="text-nowrap">{{ getClan(clan)["wins"] }}</td>
+			<td class="text-nowrap">{{ getClan(clan)["loses"] }}</td>
+			<td class="text-nowrap">{{ getClan(clan)["wl"] }}</td>
+			<td><a href="/clans/edit/{{ clan }}"><i class="bi bi-pencil mx-1"></i></a><a href="/clans/delete/{{ clan }}"><i class="bi bi-trash mx-1"></i></a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+</div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$("#search").on("keyup", function(){
+			var value = $(this).val().toLowerCase();
+			$("#clans tr").filter(function() {
+      			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    		});
+		});
+	});
+</script>
+
+
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %} Add Clan {% endblock title%}
+
+{% block content %}
+<div class="m-3 text-center">
+		<h1>Add clan</h1>
+		<h3>{{ error }}</h3>
+		<h6><a href="/clans">Back</a></h6>
+		<form method="POST" class="d-block mx-auto">
+			<div class="col-lg-4 d-block mx-auto">
+				<label for="">Name</label>
+				<input type="text" class="form-control" name="name">
+			</div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Wins</label><input type="number" class="form-control" name="wins"></div>
+			<div class="col-lg-4 d-block mx-auto"><label for="">Loses</label><input type="number" class="form-control" name="loses"></div>
+		<button class="btn btn-outline-primary col-2 text-center mt-3">Add</button>
+		</form>
+</div>
+
+{% endblock %}

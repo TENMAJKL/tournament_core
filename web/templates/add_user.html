@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %} Admin-Users {% endblock title%}
+
+{% block content %}
+<div class="justify-content-center d-flex text-center min-vh-100 align-items-center flex-column">
+	<h1>{{ action }}</h1>
+	<h5><a href="/admin">Back</a></h5>
+	<h4>{{ password }}</h4>
+	
+    <form method="POST">
+		<div>
+		<label for="">Name</label><input type="text" class="form-control" name="name">
+		</div>
+
+		<div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="visible"><label for="" class="form-check-label">Active</label></div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="edit"><label for="" class="form-check-label">Edit data</label></div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="add"><label for="" class="form-check-label">Add data</label></div>
+        <div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" name="manage"><label for="" class="form-check-label">Manage Users</label></div>
+		<div>
+		<button class="btn btn-outline-primary text-center">Add</button>
+		</div>
+		</div>
+    </form>
+</div>
+
+{% endblock %}
